@@ -1,8 +1,16 @@
+import 'dart:html';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+//add import to rendering library
+import 'package:flutter/rendering.dart';
+
 void main() {
+/*  debugPaintSizeEnabled=true;
+  debugPaintBaselinesEnabled=true;
+  debugPaintPointersEnabled=true;
+  debugPaintLayerBordersEnabled=true;*/
   runApp(MyApp());
 }
 
@@ -10,6 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Travel App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -28,25 +37,48 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(width: 50, height: 50),
+            SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                IconButton(icon: Icon(Icons.notifications),onPressed: () {}),
-                IconButton(icon: Icon(Icons.extension),onPressed: () {}),
-              ],),
-            SizedBox(height: 50),
+                IconButton(icon: Icon(Icons.notifications), onPressed: () {}),
+                IconButton(icon: Icon(Icons.extension), onPressed: () {}),
+              ],
+            ),
+            SizedBox(height: 10),
             Text.rich(
               TextSpan(
-                text: 'Bienvenue,',
-                style:TextStyle(fontWeight: FontWeight.bold),
-                children: [
-                  TextSpan(
-                    text: ' Alexis',
-                  )
-                ]),
-            style: TextStyle(fontSize: 90),
-            )
+                  text: 'Welcome,',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                  children: [
+                    TextSpan(
+                      text: ' \nAlexis',
+                      style: TextStyle(
+                          fontSize: 25, fontWeight: FontWeight.normal),
+                    )
+                  ]),
+              style: TextStyle(fontSize: 50),
+            ),
+            SizedBox(height: 20),
+            TextField(
+              decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.search,
+                    size: 30,
+                  ),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  hintText: 'Rechercher'),
+            ),
+            SizedBox(height: 40),
+            Text(
+              'Endroits sauvegardés',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+            ),
+            SizedBox(height: 20),
+            /* Text(
+              'Alexis',
+            ),*/
           ],
         ),
       ),
